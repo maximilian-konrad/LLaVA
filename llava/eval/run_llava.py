@@ -68,8 +68,8 @@ def eval_model(args):
         output_ids = model.generate(
             input_ids,
             images=image_tensor,
-            do_sample=True,
-            temperature=0.2,
+            do_sample=False,
+#            temperature=0.0,
             max_new_tokens=1024,
             use_cache=True,
             stopping_criteria=[stopping_criteria])
@@ -83,7 +83,7 @@ def eval_model(args):
     if outputs.endswith(stop_str):
         outputs = outputs[:-len(stop_str)]
     outputs = outputs.strip()
-    print(outputs)
+    return(outputs)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
